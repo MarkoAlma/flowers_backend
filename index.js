@@ -29,7 +29,7 @@ app.get("/api/search/:nev", (req, resp)=>{
 })
 
 app.get("/api/flowers/:id", (req, resp)=>{
-    const sql = "SELECT kategoriak.nev as kategNev, aruk.nev, leiras, keszlet, ar, kepUrl FROM aruk, kategoriak WHERE aruk.kategoriaId = kategoriak.id and aruk.id = 3;"
+    const sql = "SELECT kategoriak.nev as kategNev, aruk.nev, leiras, keszlet, ar, kepUrl FROM aruk, kategoriak WHERE aruk.kategoriaId = kategoriak.id and aruk.id = ?;"
     const {id} = req.params
     const values = [id]
     db.query(sql, values, (error, result)=>{
